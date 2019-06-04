@@ -24,6 +24,14 @@ class _TabNavigatorState extends State<TabNavigator> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+//        不使用滑动
+//        physics: NeverScrollableScrollPhysics(),
+//      滑动监听
+        onPageChanged: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
         controller: _controller,
         children: <Widget>[
           HomePage(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:http/http.dart' as http;
 
 // 滚动距离阈值
 const APPBAR_SCROLL_OFFSET = 100;
