@@ -16,29 +16,49 @@ class _TabNavigatorState extends State<TabNavigator> {
 
   // ignore: non_constant_identifier_names
   int _currentIndex = 0;
+
   final PageController _controller = PageController(
     initialPage: 0,
   );
 
+  _onScroll(offset) {
+    final size = MediaQuery.of(context).size;
+//    屏幕宽度
+    final width = size.width;
+//    变化
+    var yu = offset % width;
+    print(yu / width);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
+      body: NotificationListener(
+        onNotification: (scrollNotification) {
+//              滚动列表回调
+          if (scrollNotification is ScrollUpdateNotification &&
+              scrollNotification.depth == 0) {
+//                  如果有更新,并且只是深度为一级控件变化的监听，.depth == 0 也就是只监听子控件ListView
+            _onScroll(scrollNotification.metrics.pixels);
+          }
+        },
+        child: PageView(
 //        不使用滑动
 //        physics: NeverScrollableScrollPhysics(),
 //      滑动监听
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        controller: _controller,
-        children: <Widget>[
-          HomePage(),
-          SearchPage(),
-          TravelPage(),
-          MyPage(),
-        ],
+          onPageChanged: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          controller: _controller,
+          children: <Widget>[
+            HomePage(),
+            SearchPage(),
+            TravelPage(),
+            MyPage(),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
