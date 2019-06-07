@@ -64,6 +64,7 @@ class _SearchBarState extends State<SearchBar> {
         _controller.text = widget.defaultText;
       });
     }
+//    _onChanged(widget?.defaultText ?? '');
     super.initState();
   }
 
@@ -151,6 +152,7 @@ class _SearchBarState extends State<SearchBar> {
                 widget.leftButtonClick),
 //            中间输入框
             Expanded(flex: 1, child: _inputBox),
+            Padding(padding: EdgeInsets.all(8)),
 //            右边按钮
             _warpGesture(
                 Text(

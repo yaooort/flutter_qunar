@@ -44,7 +44,7 @@ class _TabNavigatorState extends State<TabNavigator> {
         },
         child: PageView(
 //        不使用滑动
-//        physics: NeverScrollableScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(),
 //      滑动监听
           onPageChanged: (index) {
             setState(() {

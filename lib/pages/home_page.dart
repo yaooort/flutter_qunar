@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_qunar/dao/home_dao.dart';
 import 'package:flutter_qunar/model/home_entity.dart';
+import 'package:flutter_qunar/pages/search_page.dart';
 import 'package:flutter_qunar/widget/grid_nav.dart';
 import 'package:flutter_qunar/widget/loading_container.dart';
 import 'package:flutter_qunar/widget/local_nav.dart';
@@ -233,7 +234,15 @@ class _HomePageState extends State<HomePage> {
 //    )
   }
 
-  get _jumpToSearch => null;
+  _jumpToSearch() {
+    print("跳转了");
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => SearchPage(
+              hideLift: false,
+              hint: SEARCH_BAR_DEFAULT_TEXT,
+              searchUrl: model?.config?.searchUrl ?? null,
+            )));
+  }
 
   get _jumpToSpeak => null;
 }

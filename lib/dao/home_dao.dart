@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_qunar/model/entity_factory.dart';
+import 'package:flutter_qunar/entity_factory.dart';
 import 'package:flutter_qunar/model/home_entity.dart';
 import 'package:http/http.dart' as http;
 
