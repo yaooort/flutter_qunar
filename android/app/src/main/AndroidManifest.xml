@@ -1,11 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yaooort.flutter_qunar">
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
+
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="flutter_qunar"
@@ -29,5 +35,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="16462239"/>
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="SxeSg90GoyO9kbzaa1Q1rfdo"/>
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="PMoDYEv4CwL9YFlaCxZl5TgYFnQa7LLL"/>
     </application>
 </manifest>

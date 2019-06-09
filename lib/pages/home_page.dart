@@ -238,8 +238,8 @@ class _HomePageState extends State<HomePage> {
     print("跳转了");
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => SearchPage(
-              hideLift: false,
-              hint: SEARCH_BAR_DEFAULT_TEXT,
+              hideLift: true,
+              hint: '',
               searchUrl: model?.config?.searchUrl ?? null,
             )));
   }

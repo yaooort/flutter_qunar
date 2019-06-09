@@ -5,6 +5,7 @@ import 'package:flutter_qunar/dao/search_dao.dart';
 import 'package:flutter_qunar/model/search_entity.dart';
 import 'package:flutter_qunar/widget/search_bar.dart';
 import 'package:flutter_qunar/widget/webview.dart';
+
 const TYPES = [
   'channelgroup',
   'gs',
@@ -143,62 +144,20 @@ class _SearchPageState extends State<SearchPage> {
         child: Row(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(10),
-              child: Center(
-                child: Image.asset(_typeImage(item.type)),
-              ),
+              margin: EdgeInsets.all(8),
+              child: Image.asset(_typeImage(item.type),color: Colors.indigoAccent),
             ),
             Expanded(
                 flex: 1,
-                child: Column(
-                  children: <Widget>[
-                    Text.rich(
-                      TextSpan(
-                        text: '${item.word ?? ''}  ',
-                        style: TextStyle(fontSize: 13, color: Colors.black54),
-                        children: [
-                          TextSpan(
-                            text: '${item.districtname ?? ''}  ',
-                            style: TextStyle(fontSize: 9, color: Colors.grey),
-                          ),
-                          TextSpan(
-                            text: '${item.zonename ?? ''}  ',
-                            style: TextStyle(fontSize: 9, color: Colors.grey),
-                          )
-                        ],
-                      ),
-                      textAlign: TextAlign.left,
-                      softWrap: true,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          '${item.word ?? ''}  ',
-                          style: TextStyle(fontSize: 13, color: Colors.black54),
-                        ),
-                        Text(
-                          '${item.districtname ?? ''}  ',
-                          style: TextStyle(fontSize: 9, color: Colors.grey),
-                        ),
-                        Text(
-                          '${item.zonename ?? ''}  ',
-                          style: TextStyle(fontSize: 9, color: Colors.grey),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          '￥${item.price ?? ''}  ',
-                          style: TextStyle(fontSize: 13, color: Colors.black54),
-                        ),
-                        Text(
-                          '${item.star ?? ''}  ',
-                          style: TextStyle(fontSize: 9, color: Colors.grey),
-                        )
-                      ],
-                    )
-                  ],
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      _title(item, searchEntity.keyword),
+                      _subTitle(item)
+                    ],
+                  ),
                 ))
           ],
         ),
@@ -216,5 +175,46 @@ class _SearchPageState extends State<SearchPage> {
       }
     }
     return 'images/type_$path.png';
+  }
+
+  Widget _title(SearchData item, String keyword) {
+    List<TextSpan> spans = [];
+    if ((item.word ?? '').length != 0) {
+      List<String> splits = item.word.split(keyword);
+      TextStyle n = TextStyle(fontSize: 16, color: Colors.black87);
+      TextStyle l = TextStyle(fontSize: 16, color: Colors.deepOrangeAccent);
+      for (int i = 0; i < splits.length; i++) {
+        if ((i + 1) % 2 == 0) {
+          //高亮
+          spans.add(TextSpan(style: l, text: keyword));
+        }
+        String v = splits[i];
+        if (v != null && v.length > 0) {
+          //非高亮
+          spans.add(TextSpan(style: n, text: v));
+        }
+      }
+    }
+    spans.add(TextSpan(
+        text: '   ${item.districtname ?? ''}  ',
+        style: TextStyle(fontSize: 10, color: Colors.grey)));
+    spans.add(TextSpan(
+        text: '   ${item.zonename ?? ''}  ',
+        style: TextStyle(fontSize: 10, color: Colors.grey)));
+
+    return Text.rich(TextSpan(children: spans));
+  }
+
+  Widget _subTitle(SearchData item) {
+    List<TextSpan> spans = [];
+
+    spans.add(TextSpan(
+        style: TextStyle(fontSize: 14, color: Colors.lightBlue),
+        text: '${item.price ?? ''}  '));
+    spans.add(TextSpan(
+        style: TextStyle(fontSize: 14, color: Colors.grey),
+        text: '${item.star ?? ''}  '));
+
+    return RichText(text: TextSpan(children: spans));
   }
 }
