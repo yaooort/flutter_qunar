@@ -10,7 +10,7 @@ import 'package:flutter_qunar/widget/local_nav.dart';
 import 'package:flutter_qunar/widget/sales_box.dart';
 import 'package:flutter_qunar/widget/search_bar.dart';
 import 'package:flutter_qunar/widget/sub_nav.dart';
-import 'package:flutter_qunar/widget/webview.dart';
+import 'package:flutter_qunar/widget/webview_page.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 // 滚动距离阈值
@@ -30,7 +30,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _handleRefresh();
-  } //  appbar透明度
+  }
+  //  appbar透明度
 
   double appBarAlpha = 0;
 

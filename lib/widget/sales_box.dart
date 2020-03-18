@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qunar/model/home_entity.dart';
-import 'package:flutter_qunar/widget/webview.dart';
+import 'package:flutter_qunar/widget/webview_page.dart';
 
 // 首页广告区域下面的单独按钮
 class SalesBox extends StatelessWidget {
@@ -59,7 +59,7 @@ class SalesBox extends StatelessWidget {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => WebView(
                             url: salesBox.moreUrl,
-                            hideAppBar: false,
+                            isShowTabBar: false,
                             title: "更多活动")));
                   },
                   child: Text(
@@ -105,7 +105,7 @@ class SalesBox extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) =>
-                WebView(url: model.url, title: model.title, icon: model.icon)));
+                WebView(url: model.url, title: model.title)));
       },
       child: Container(
         decoration: BoxDecoration(

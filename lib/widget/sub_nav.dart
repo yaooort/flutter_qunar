@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qunar/model/home_entity.dart';
-import 'package:flutter_qunar/widget/webview.dart';
+import 'package:flutter_qunar/widget/webview_page.dart';
 
 // 首页广告区域下面的单独按钮
 class SubNav extends StatelessWidget {
@@ -49,9 +49,8 @@ class SubNav extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => WebView(
                 url: model.url,
-                hideAppBar: model.hideAppBar,
-                title: model.title,
-                icon: model.icon)));
+                isShowTabBar: model.hideAppBar,
+                title: model.title)));
       },
       child: Column(
         children: <Widget>[

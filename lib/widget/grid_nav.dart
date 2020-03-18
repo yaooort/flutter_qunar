@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qunar/model/home_entity.dart';
-import 'package:flutter_qunar/widget/webview.dart';
+import 'package:flutter_qunar/widget/webview_page.dart';
 
 // 首页广告区域下面的网格卡片
 class GridNav extends StatelessWidget {
@@ -66,9 +66,8 @@ class GridNav extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => WebView(
                 url: mainItem.url,
-                hideAppBar: mainItem.hideAppBar,
-                title: mainItem.title,
-                statusBarColor: mainItem.statusBarColor)));
+                isShowTabBar: mainItem.hideAppBar,
+                title: mainItem.title)));
       },
       child: Stack(
         alignment: AlignmentDirectional.topCenter,
@@ -133,9 +132,8 @@ class GridNav extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => WebView(
                 url: card.url,
-                hideAppBar: card.hideAppBar,
-                title: card.title,
-                statusBarColor: card.statusBarColor)));
+                isShowTabBar: card.hideAppBar,
+                title: card.title)));
       },
       child: widget,
     );

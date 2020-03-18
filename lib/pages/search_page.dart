@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_qunar/dao/search_dao.dart';
 import 'package:flutter_qunar/model/search_entity.dart';
 import 'package:flutter_qunar/widget/search_bar.dart';
-import 'package:flutter_qunar/widget/webview.dart';
+import 'package:flutter_qunar/widget/webview_page.dart';
 
 const TYPES = [
   'channelgroup',
